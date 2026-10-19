@@ -1,0 +1,34 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.hterminal.app
+productName: HTerminal
+files:
+  - filter:
+      - dist/**/*
+      - '!dist/*.dmg'
+      - '!dist/*.exe'
+      - '!dist/*.blockmap'
+      - '!dist/mac'
+      - '!dist/win-unpacked'
+      - '!dist/builder-debug.yml'
+      - package.json
+electronDownload:
+  mirror: https://npmmirror.com/mirrors/electron/
+mac:
+  category: public.app-category.developer-tools
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+  icon: build/icon.icns
+asarUnpack:
+  - node_modules/ssh2/**
+win:
+  icon: build/icon.png
+  target:
+    - target: nsis
+      arch:
+        - x64
+electronVersion: 28.3.3

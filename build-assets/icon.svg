@@ -1,0 +1,28 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 品牌蓝渐变背景：亮蓝 → 品牌蓝 → 深蓝，对角线方向 -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="55%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <!-- 下划线渐变：品牌青 → 品牌绿（与外观主题色同源） -->
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#68d391"/>
+    </linearGradient>
+  </defs>
+
+  <!-- macOS 圆角方形底（WebStorm 式：渐变底 + 大字母 + 底部装饰线） -->
+  <rect x="112" y="112" width="800" height="800" rx="185" fill="url(#bg)"/>
+
+  <!-- 字母 H（几何绘制，居中偏上） -->
+  <g fill="#ffffff">
+    <rect x="332" y="280" width="70" height="320" rx="20"/>
+    <rect x="622" y="280" width="70" height="320" rx="20"/>
+    <rect x="332" y="418" width="360" height="44"/>
+  </g>
+
+  <!-- 渐变下划线 -->
+  <rect x="332" y="660" width="360" height="44" rx="22" fill="url(#line)"/>
+</svg>

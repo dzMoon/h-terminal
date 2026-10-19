@@ -1,0 +1,68 @@
+{
+  "name": "hterminal",
+  "version": "0.1.0",
+  "description": "HTerminal - SSH terminal with AI assistant",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node build.mjs && electron .",
+    "dev": "node build.mjs && electron . --enable-logging",
+    "package:mac": "node build.mjs && electron-builder --mac --x64 --arm64 && node organize-release.mjs",
+    "package:win": "node build.mjs && electron-builder --win --x64 && node organize-release.mjs",
+    "package": "node build.mjs && electron-builder --mac --x64 --arm64 && electron-builder --win --x64 && node organize-release.mjs"
+  },
+  "author": "mac",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3",
+    "esbuild": "^0.21.5"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.10.10",
+    "@emotion/react": "^11.14.0",
+    "@xterm/addon-fit": "^0.10.0",
+    "@xterm/xterm": "^5.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.7.0",
+    "ssh2": "^1.16.0"
+  },
+  "build": {
+    "appId": "com.hterminal.app",
+    "productName": "HTerminal",
+    "files": [
+      "dist/**/*",
+      "!dist/*.dmg",
+      "!dist/*.exe",
+      "!dist/*.blockmap",
+      "!dist/mac",
+      "!dist/win-unpacked",
+      "!dist/builder-debug.yml",
+      "package.json"
+    ],
+    "electronDownload": {
+      "mirror": "https://npmmirror.com/mirrors/electron/"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        { "target": "dmg", "arch": ["x64", "arm64"] }
+      ],
+      "icon": "build/icon.icns"
+    },
+    "asarUnpack": [
+      "node_modules/ssh2/**"
+    ],
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ]
+    },
+    "directories": {
+      "buildResources": "build"
+    }
+  },
+  "productName": "HTerminal"
+}
